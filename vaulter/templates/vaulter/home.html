@@ -1,0 +1,17 @@
+{% extends "vaulter/base.html" %}
+{% block content %}
+    {% for safe in safes %}
+        <article class="media content-section">
+            <div class="media-body">
+                <div class="article-metadata">
+                    <a class="mr-2" href="#">{{ safe.vaultername }}</a>
+                    <small class="text-muted">{{ safe.date_modified_last|date:"F jS, Y" }}</small>
+                </div>
+                <h2><a class="article-title" href="{% url 'safe-detail' safe.id%}">{{ safe.service }}</a></h2>
+                <p class="article-content">{{ safe.pwned }}</p>
+            </div>
+        </article>
+    {% endfor %}
+{% endblock content %}
+
+

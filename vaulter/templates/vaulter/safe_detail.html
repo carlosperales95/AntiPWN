@@ -1,0 +1,22 @@
+{% extends "vaulter/base.html" %}
+{% block content %}
+    <article class="media content-section">
+        <div class="media-body">
+            <div class="article-metadata">
+                <h2 class="article-title">{{ object.service }} ({{ object.username }})</h2>
+                <p class="article-content"> <b>Account Email: </b> {{ object.email }}</p>
+                <p class="article-content"> <b>Password: </b> {{ object.password }}</p>
+                {% if object.vaulter == user %}
+                    <div>
+                    <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'safe-update' object.id %}">Update</a>
+                    <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'safe-delete' object.id %}">Delete</a>
+                    </div>
+                {% endif %}
+            </div>
+            <p class="article-content text-muted"> <b>Last Password Update:</b> {{ object.date_modified_last|date:"F jS, Y" }}</p>
+            <p class="article-content"> <b>Pwned?</b> {{ object.pwned }}</p>
+        </div>
+    </article>
+{% endblock content %}
+
+
