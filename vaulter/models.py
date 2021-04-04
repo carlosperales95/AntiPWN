@@ -4,10 +4,10 @@ from django.contrib.auth.models import User
 from django.urls import reverse
 
 class Safe(models.Model):
-    service = models.CharField(max_length=100, null=False)
+    service = models.CharField(max_length=200, null=False)
     email = models.EmailField(null=False)
-    username = models.CharField(max_length=100, null=False)
-    password = models.CharField(max_length=100, null=False)
+    username = models.CharField(max_length=200, null=False)
+    password = models.CharField(max_length=200, null=False)
     pwned = models.BooleanField(default=False)
     date_modified_last = models.DateTimeField(default=timezone.now)
     vaulter = models.ForeignKey(User, on_delete=models.CASCADE)
